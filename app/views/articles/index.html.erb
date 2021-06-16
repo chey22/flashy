@@ -3,7 +3,10 @@
 <ul>
     <% @articles.each do |article| %>
         <li>
-            <%= article.title %>
+        <%# let's add a convenient way to get to an article's page, so %>
+        <%# link each article's title to its respective page %>
+        <%#  if we pass an article, link_to will call article_path %>
+            <%= link_to article.title, article %>
         </li>
     <% end %>
 </ul>
