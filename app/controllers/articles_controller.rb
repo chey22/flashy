@@ -54,6 +54,15 @@ class ArticlesController < ApplicationController
     end
   end
 
+  # our resourceful routing (resources :articles) already provides the route,
+    # which maps DELETE /articles/:id requests to the destroy action of ArticlesController
+  def destroy
+    @article = Article.find(params[:id])
+    @article.destroy
+
+    redirect_to root_path
+  end
+
   private
   # strong params (more info at https://guides.rubyonrails.org/action_controller_overview.html#strong-parameters)
     # submitted form data is put into the params Hash, alongside captured route parameters

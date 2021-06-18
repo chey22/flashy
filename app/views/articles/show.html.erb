@@ -2,7 +2,16 @@
 
 <p><%= @article.body %></p>
 
-<%# We can now update an article by visiting its edit page, e.g. http://localhost:3000/articles/1/edit %>
 <ul>
-  <li><%= link_to "Edit", edit_article_path(@article) %></li>
+    <%# We can now update an article by visiting its edit page, e.g. http://localhost:3000/articles/1/edit %>
+    <li><%= link_to "Edit", edit_article_path(@article) %></li>
+    <%# method: :delete option causes the link to make a DELETE request instead of a GET request.
+    The data: { confirm: "Are you sure?" } option causes a confirmation dialog to appear when the link is clicked.
+    If the user cancels the dialog, the request is aborted.%>
+    
+    <%# Both of these options are powered by a feature of Rails called Unobtrusive JavaScript (UJS more info: https://guides.rubyonrails.org/working_with_javascript_in_rails.html).
+    The JavaScript file that implements these behaviors is included by default in fresh Rails applications. %>
+    <li><%= link_to "Destroy", article_path(@article),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } %></li>
 </ul>
