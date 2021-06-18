@@ -1,2 +1,8 @@
 <h1><%= @article.title %></h1>
+
 <p><%= @article.body %></p>
+
+<%# We can now update an article by visiting its edit page, e.g. http://localhost:3000/articles/1/edit %>
+<ul>
+  <li><%= link_to "Edit", edit_article_path(@article) %></li>
+</ul>
