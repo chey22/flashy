@@ -15,3 +15,37 @@
                   method: :delete,
                   data: { confirm: "Are you sure?" } %></li>
 </ul>
+
+<%# `create` method for association %>
+    <%# use the create method on @article.comments to create and save the comment.
+    This will automatically link the comment so that it belongs to that particular article %>
+<h2>Comments</h2>
+<% @article.comments.each do |comment| %>
+    <p>
+        <strong>Commenter: </strong>
+        <%= comment.commenter %>
+    </p>
+    <p>
+        <strong>Comment: </strong>
+        <%= comment.body %>
+    </p>
+<% end %>
+
+<%# add a form on the Article show page that creates a new comment by calling the CommentsController create action %>
+<%# form_with call here uses an array, which will build a nested route, such as /articles/1/comments %>
+<h2>Add a comment:</h2>
+<%= form_with model: [ @article, @article.comments.build ] do |form| %>
+    <p>
+        <%= form.label :commenter %>
+        <br>
+        <%= form.text_field :commenter %>
+    </p>
+    <p>
+        <%= form.label :body %>
+        <br>
+        <%= form.text_area :body %>
+    </p>
+    <p>
+        <%= form.submit %>
+    </p>
+<% end %>
