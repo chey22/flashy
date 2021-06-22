@@ -1,3 +1,4 @@
+<%# The @article object is available to any partials rendered in the view because we defined it as an instance variable %>
 <h1><%= @article.title %></h1>
 
 <p><%= @article.body %></p>
@@ -20,32 +21,13 @@
     <%# use the create method on @article.comments to create and save the comment.
     This will automatically link the comment so that it belongs to that particular article %>
 <h2>Comments</h2>
-<% @article.comments.each do |comment| %>
-    <p>
-        <strong>Commenter: </strong>
-        <%= comment.commenter %>
-    </p>
-    <p>
-        <strong>Comment: </strong>
-        <%= comment.body %>
-    </p>
-<% end %>
+<%# render the partial in app/views/comments/_comment.html.erb once for each comment that is in the @article.comments collection. %>
+    <%# As the render method iterates over the @article.comments collection,
+    it assigns each comment to a local variable named the same as the partial, in this case comment,
+    which is then available in the partial for us to show  %>
+<%= render @article.comments %>
 
-<%# add a form on the Article show page that creates a new comment by calling the CommentsController create action %>
-<%# form_with call here uses an array, which will build a nested route, such as /articles/1/comments %>
 <h2>Add a comment:</h2>
-<%= form_with model: [ @article, @article.comments.build ] do |form| %>
-    <p>
-        <%= form.label :commenter %>
-        <br>
-        <%= form.text_field :commenter %>
-    </p>
-    <p>
-        <%= form.label :body %>
-        <br>
-        <%= form.text_area :body %>
-    </p>
-    <p>
-        <%= form.submit %>
-    </p>
-<% end %>
+<%# defines the form partial that creates a new comment by calling the CommentsController create action %>
+<%# Rails is smart enough to spot the forward slash in that string and realize that you want to render the _form.html.erb file in the app/views/comments directory. %>
+<%= render 'comments/form' %>
