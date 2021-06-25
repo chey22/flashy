@@ -11,6 +11,13 @@
         <br>
         <%= form.text_area :body %>
     </p>
+    <%# add a select box to the forms, and let the user select the status when they create a new article or post a new comment.
+    We can also specify the default status as public %>
+    <p>
+        <%= form.label :status %>
+        <br>
+        <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
+    </p>
     <p>
         <%= form.submit %>
     </p>

@@ -67,6 +67,6 @@ class ArticlesController < ApplicationController
   # strong params (more info at https://guides.rubyonrails.org/action_controller_overview.html#strong-parameters)
     # submitted form data is put into the params Hash, alongside captured route parameters
   def article_params
-    params.require(:article).permit(:title, :body)
+    params.require(:article).permit(:title, :body, :status)
   end
 end

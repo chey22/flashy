@@ -1,13 +1,18 @@
 <h1>Articles</h1>
 
+Our blog has <%= Article.public_count %> articles and counting!
+
 <ul>
     <% @articles.each do |article| %>
-        <li>
-        <%# let's add a convenient way to get to an article's page, so %>
-        <%# link each article's title to its respective page %>
-        <%#  if we pass an article, link_to will call article_path %>
-            <%= link_to article.title, article %>
-        </li>
+        <%# use the `archived?`` method to avoid displaying any article that is archived %>
+        <% unless article.archived? %>
+            <li>
+            <%# let's add a convenient way to get to an article's page, so %>
+            <%# link each article's title to its respective page %>
+            <%#  if we pass an article, link_to will call article_path %>
+                <%= link_to article.title, article %>
+            </li>
+        <% end %>
     <% end %>
 </ul>
 

@@ -25,6 +25,14 @@ But when rendering, it is referenced without the underscore, e.g. render "form".
     <% end %>
   </div>
 
+  <%# add a select box to the forms, and let the user select the status when they create a new article or post a new comment.
+  We can also specify the default status as public %>
+  <div>
+    <%= form.label :status %>
+    <br>
+    <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
+  </div>
+
   <div>
     <%= form.submit %>
   </div>
