@@ -1,9 +1,22 @@
 <%# comment partial to extract showing all the comments for the article in the sender of the show page %>
 <p>
+    <strong>Total comments:</strong> 
+    <%= Comment.public_count %>
+</p>
+<p>
      <strong>Commenter: </strong>
     <%= comment.commenter %>
 </p>
 <p>
     <strong>Comment: </strong>
     <%= comment.body %>
+</p>
+
+<%# Clicking this new "Destroy Comment" link will fire off a DELETE /articles/:article_id/comments/:id to our CommentsController,
+which can then use this to find the comment we want to delete, 
+so let's add a destroy action to our controller %>
+<p>
+    <%= link_to 'Destroy Comment', [comment.article, comment],
+            method: :delete,
+            data: { confirm: "Are you sure?" } %>
 </p>

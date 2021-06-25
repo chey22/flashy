@@ -33,7 +33,5 @@ ActiveRecord::Schema.define(version: 2021_06_24_233337) do
     t.index ["article_id"], name: "index_comments_on_article_id"
   end
 
-  # # Each comment belongs to one article.
-  # One article can have many comments.
   add_foreign_key "comments", "articles"
 end
