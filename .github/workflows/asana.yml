@@ -5,8 +5,8 @@ name: Asana Update
 # Controls when the workflow will run
 on:
     # Triggers the workflow on push or pull request events but only for the development branch
-    push:
-        branches: [master]
+    # push:
+    #     branches: [master]
     pull_request:
         branches: [master]
         types: [opened]
@@ -29,6 +29,7 @@ jobs:
                   asana-pat: ${{ secrets.ASANA_TOKEN }}
                   task-comment: 'View Pull Request: '
                   trigger-phrase: "\\*\\*Asana Card:\\*\\*"
+                  targets: '[{"project": "GitHub/Asana Testing", "section": "Review"}]'
             
             # Runs a single command using the runners shell
             - name: Run a one-line script
