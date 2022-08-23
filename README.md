@@ -22,3 +22,5 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+Deployed to https://not-flashy.herokuapp.com/
